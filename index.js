@@ -2,7 +2,11 @@ const express = require('express')
 const path = require('path')
 const logger = require('./Middleware/logger')
 const app = express()
+// const exphbs = require('express-handlebars')
 
+
+
+app.engine('express-handlebars')
 
 
 //init middleware

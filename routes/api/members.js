@@ -5,6 +5,7 @@ const uuid = require('uuid')
 
 
 
+
 // app.get('/', (req, res)=>{
 
 //     res.send(path.join(__dirname, 'public', 'index.html'))
@@ -65,6 +66,22 @@ router.put('/:id/data', (request, response) => {
                 member.age = updated_member.age ? updated_member.age : member.age
             }
         })
+
+        response.json({message: 'member updated', member})
+    
+    }else{
+        response.status(404).json({message: 'Not found'})
+    }
+
+})
+
+router.delete('/:id/data', (request, response) => {
+    
+    let found = members.some(member => member.id === parseInt(request.params.id))
+
+    if(found)
+    {
+        response.json({message: 'member deleted', members: members.filter(member => member.id === parseInt(request.params.id))})
     
     }else{
         response.status(404).json({message: 'Not found'})
